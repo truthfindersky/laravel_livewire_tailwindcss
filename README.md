@@ -9,7 +9,7 @@
 
 ## About this Project
 
-This project was built using Laravel 12, Livewire 3.6, and Bootstrap 5 Admin template (sass) to create a dynamic and interactive web application.
+This project was built using Laravel 12, Livewire 3.6, and tailwindcss 3.1.0 to create a dynamic and interactive web application.
 
 ### Scaffolding
 
@@ -35,25 +35,22 @@ add
 'layout' => 'layouts.app',
 ```
 
-### Bootstrap
+### resources/views/layouts/app.blade.php
 
 ```bash
-npm install -D sass-embedded
-
-Add Sass file to app.js
-import "../sass/app.scss";
-
-resources/views/layouts/app.blade.php and resources/views/layouts/guest.blade.php
-@vite(['resources/scss/styles.scss', 'resources/js/app.js'])
-
-vite.config.js
-input: ['resources/scss/styles.scss', 'resources/js/app.js'],
-
-Change all .blade.php design from tailwindcss to bootstrap
-
-You can also uninstall tailwindcss
-npm uninstall tailwindcss postcss autoprefixer
-rm -rf tailwind.config.js postcss.config.js
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        //
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
+    </head>
+    <body class="font-sans antialiased">
+        //
+        @livewireScripts
+    </body>
+</html>
 ```
 ### Migration
 
